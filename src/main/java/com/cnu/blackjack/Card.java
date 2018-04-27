@@ -15,4 +15,15 @@ public class Card {
         this.rank = rank;
         this.suit = suit;
     }
+
+    //각 카드의 점수를 반환해줌
+    public int getScore(int rank){
+        if(rank == 1){
+            return 11;
+        }else if(rank >= 10) {
+            return 10;
+        }else{
+            return rank;
+        }
+    }
 }
