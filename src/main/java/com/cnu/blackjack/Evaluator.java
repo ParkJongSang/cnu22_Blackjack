@@ -10,6 +10,7 @@ public class Evaluator {
     private Map<String, Player> playerMap;
     private Dealer dealer;
     private int playerScore;
+    private int dealerScore;
 
     public Evaluator(Map<String, Player> playerMap) {
         this.playerMap = playerMap;
@@ -18,7 +19,7 @@ public class Evaluator {
     }
 
     public void start() {
-        int dealerScore = getPlayerScore();
+        dealerScore = dealer.getDealerScore();
         playerMap.forEach((name,player)-> {
             player = check16(player);
             if(player.getPlayerScore()==21){
@@ -29,9 +30,9 @@ public class Evaluator {
                 win(player);
             }else if(player.getPlayerScore() <= dealerScore){
                 if(dealerScore > 21){
-                    lose(player);
-                }else{
                     win(player);
+                }else{
+                    lose(player);
                 }
             }
 
