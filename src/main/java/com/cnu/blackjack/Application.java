@@ -63,6 +63,7 @@ public class Application {
             if(scan.next().equals("N")) {
                 break;
             }
+            System.out.println("\n\n");
         }
 
 
