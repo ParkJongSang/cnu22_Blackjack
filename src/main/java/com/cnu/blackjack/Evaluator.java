@@ -24,12 +24,12 @@ public class Evaluator {
             if(player.getPlayerScore()==21){
                 win(player);
             }else if(player.getPlayerScore()>21){
-                // lose();
+                lose(player);
             }else if(player.getPlayerScore() > dealerScore){
                 win(player);
             }else if(player.getPlayerScore() <= dealerScore){
                 if(dealerScore > 21){
-                    //lose();
+                    lose(player);
                 }else{
                     win(player);
                 }
@@ -39,10 +39,11 @@ public class Evaluator {
     }
 
     public void win(Player player){
-        int betMoney = player.getCurrentBet();
-        int seedMoney = player.getBalance();
-        int resultMoney = betMoney * 2 + seedMoney;
-        player.setBalance(resultMoney);
+        player.setBalance(player.getCurrentBet() * 2 + player.getBalance());
+    }
+
+    public void lose(Player player) {
+        player.setBalance(player.getBalance() - player.getCurrentBet());
     }
 
     private Player check16(Player player){
@@ -60,5 +61,4 @@ public class Evaluator {
             player.hitCard();
         });
     }
-
 }
