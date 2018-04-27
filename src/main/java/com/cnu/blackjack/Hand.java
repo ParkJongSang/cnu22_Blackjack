@@ -1,6 +1,7 @@
 package com.cnu.blackjack;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Hand {
@@ -19,5 +20,15 @@ public class Hand {
 
     public List<Card> getCardList() {
         return cardList;
+    }
+
+    public int getHandScore(){
+        int totalScore = 0;
+        Iterator it = cardList.iterator();
+        while(it.hasNext()){
+            Card currentCard = (Card)it.next();
+            totalScore = totalScore + currentCard.getScore(currentCard.getRank());
+        }
+        return totalScore;
     }
 }

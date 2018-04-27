@@ -21,7 +21,6 @@ public class EvaluatorTest {
 
     @Test
     public void 각_플레이어는_16이하면_히트한다() {
-
     }
 
     @Test
