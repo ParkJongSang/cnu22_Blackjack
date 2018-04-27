@@ -10,19 +10,19 @@ public class Application {
 
         Scanner scan = new Scanner(System.in);
 
-        System.out.print("플레이어 수 입력");
+        System.out.print("플레이서 수 입력 ");
         playerNumber = scan.nextInt();
-        System.out.print("덱 개수 설정");
+        System.out.print("덱 개수 설정 ");
         int deckcount = scan.nextInt();
         Deck deck = new Deck(deckcount);
         Game game = new Game(deck);
 
-        for(int i =0; i < playerNumber; i++){
+        for (int i = 0; i < playerNumber; i++) {
 
-            System.out.println("플레이어 이름 설정");
+            System.out.println("플레이어 " + (i + 1) + " 이름 설정");
             playerName = scan.next();
 
-            System.out.println("플레이어 시드머니 설정");
+            System.out.println("플레이어 " + (i + 1) + " 시드머니 설정");
             seedMoney = scan.nextInt();
             game.addPlayer(playerName, seedMoney);
         }
@@ -38,10 +38,13 @@ public class Application {
 
             Evaluator evaluator = new Evaluator(game.getPlayerList());
             evaluator.start();
+            System.out.println("=====================================");
             System.out.println("딜러의 스코어 : " + evaluator.getDealerScore());
+            System.out.println("=====================================");
             game.getPlayerList().forEach((name, player) -> {
                 System.out.println(name + "의 스코어 : " + player.getPlayerScore());
                 System.out.println(name + "의 남은금액 : " + player.getBalance());
+                System.out.println("-------------------------------------");
             });
             System.out.println("계속 진행? (Y/N)");
             if(scan.next().equals("N")) {
