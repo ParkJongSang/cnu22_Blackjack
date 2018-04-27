@@ -37,7 +37,14 @@ public class EvaluatorTest {
 
     @Test
     public void 블랙잭이나오면_2배로_보상받고_해당_플레이어의_턴은_끝난다() {
+        Evaluator evaluator=new Evaluator(game.getPlayerList());
+        Player testplayer = evaluator.getPlayerMap().get("user1");
+        testplayer.placeBet(100);
+        testplayer.setScore(21);
+        //블랙잭일 경우 이긴경우이기 때문에 win실행
+        evaluator.win(testplayer);
 
+        assertTrue(testplayer.getBalance() == 1100);
 
     }
 
