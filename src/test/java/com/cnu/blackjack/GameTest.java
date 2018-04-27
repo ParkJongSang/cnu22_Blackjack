@@ -1,6 +1,6 @@
 package com.cnu.blackjack;
 
-import com.cnu.blackjack.exceptions.NotEveyonePlacedBetException;
+import com.cnu.blackjack.exceptions.NotEveryonePlacedBetException;
 import org.junit.Test;
 
 import java.util.Map;
@@ -37,7 +37,7 @@ public class GameTest {
         assertThat(playerBalance, is(2000));
     }
 
-    @Test(expected = NotEveyonePlacedBetException.class)
+    @Test(expected = NotEveryonePlacedBetException.class)
     public void 게임은_모든플레이어가_베팅하지않으면_시작할수없다() {
         Game game = new Game(new Deck(2));
         game.addPlayer("conch", 5000);

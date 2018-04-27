@@ -1,7 +1,7 @@
 package com.cnu.blackjack;
 
 import com.cnu.blackjack.exceptions.DuplicatePlayerException;
-import com.cnu.blackjack.exceptions.NotEveyonePlacedBetException;
+import com.cnu.blackjack.exceptions.NotEveryonePlacedBetException;
 import com.cnu.blackjack.exceptions.PlayerDoesNotExistException;
 
 import java.util.HashMap;
@@ -32,7 +32,7 @@ public class Game {
     public void start() {
         playerList.forEach((name, player) -> {
             if (player.getCurrentBet() == 0) {
-                throw new NotEveyonePlacedBetException();
+                throw new NotEveryonePlacedBetException();
             }
         });
     }
