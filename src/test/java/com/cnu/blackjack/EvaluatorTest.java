@@ -3,6 +3,7 @@ package com.cnu.blackjack;
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
 public class EvaluatorTest {
@@ -30,7 +31,6 @@ public class EvaluatorTest {
         evaluator.start();
         System.out.println("16이하인 경우 hit : "+testplayer.getPlayerScore());
         assertTrue(testplayer.getPlayerScore()>16);
-        //
     }
 
     @Test
@@ -41,6 +41,18 @@ public class EvaluatorTest {
 
     @Test
     public void 각_플레이어는_17이상이면_스테이한다() {
+        //16이하인 경우 hit를 하므로 정상적으로 동작한다면 16이하의 점수를 가질 수 없음
+        Game game=new Game(new Deck(1));
+        game.addPlayer("user1",1000);
+        Evaluator evaluator=new Evaluator(game.getPlayerList());
+        Player testplayer=evaluator.getPlayerMap().get("user1");
+        //플레이어의 카드점수가 17이상인 경우 카드의 개수가 변하지 않음
+        int before_card_size=testplayer.getHand().getCardList().size();
+        if(testplayer.getPlayerScore()>=17){
+            evaluator.start();
+            int after_card_size=testplayer.getHand().getCardList().size();
+            assertEquals(before_card_size,after_card_size);
+        }
 
     }
 }
