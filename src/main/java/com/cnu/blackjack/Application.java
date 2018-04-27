@@ -1,5 +1,6 @@
 package com.cnu.blackjack;
 
+        import java.util.Iterator;
         import java.util.Scanner;
 
 public class Application {
@@ -28,6 +29,7 @@ public class Application {
         }
 
         System.out.println("=================게임시작===============");
+
         while(true) {
             System.out.println("배팅 금액을 입력합니다.");
             game.getPlayerList().forEach((name, player) -> {
@@ -45,7 +47,18 @@ public class Application {
                 System.out.println(name + "의 스코어 : " + player.getPlayerScore());
                 System.out.println(name + "의 남은금액 : " + player.getBalance());
                 System.out.println("-------------------------------------");
+                System.out.println("=====================================");
+
+
             });
+
+            Iterator it = evaluator.getPlayerMap().values().iterator();
+            while(it.hasNext()){
+                Player removePlayer = (Player) it.next();
+                if(removePlayer.getBalance() <= 0){
+                    it.remove();
+                }
+            }
             System.out.println("계속 진행? (Y/N)");
             if(scan.next().equals("N")) {
                 break;
