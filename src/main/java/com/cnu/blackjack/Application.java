@@ -27,15 +27,16 @@ public class Application {
             game.addPlayer(playerName, seedMoney);
         }
 
-        Evaluator evaluator = new Evaluator(game.getPlayerList());
-
-
         System.out.println("=================게임시작===============");
+        System.out.println("배팅 금액을 입력합니다.");
         game.getPlayerList().forEach((name, player) -> {
             System.out.print("베팅할 금액을 설정하세요 "+name+" :");
             int bet = scan.nextInt();
             player.placeBet(bet);
         });
+
+        Evaluator evaluator = new Evaluator(game.getPlayerList());
+
 
         System.out.println(game.getPlayerList());
         System.out.println("종료");
