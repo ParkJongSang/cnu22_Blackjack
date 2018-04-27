@@ -1,14 +1,22 @@
 package com.cnu.blackjack;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertTrue;
 
 public class EvaluatorTest {
-
     @Test
     public void 게임초기화시_모든플레이어는_2장의카드를_받는다() {
+        Game game=new Game(new Deck(1));
+        game.addPlayer("user1",100);
+        game.addPlayer("user2",100);
+        game.addPlayer("user3",100);
+        Evaluator evaluator=new Evaluator(game.getPlayerList());
 
+        evaluator.getPlayerMap().forEach((name,player)->{
+            assertTrue(player.getHand().getCardList().size()==2);
+        });
     }
 
     @Test
@@ -27,6 +35,7 @@ public class EvaluatorTest {
 
     @Test
     public void 블랙잭이나오면_2배로_보상받고_해당_플레이어의_턴은_끝난다() {
+
 
     }
 
