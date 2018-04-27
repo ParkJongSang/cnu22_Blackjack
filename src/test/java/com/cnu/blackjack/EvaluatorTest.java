@@ -2,6 +2,8 @@ package com.cnu.blackjack;
 
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertTrue;
+
 public class EvaluatorTest {
 
     @Test
@@ -11,7 +13,15 @@ public class EvaluatorTest {
 
     @Test
     public void 각_플레이어는_16이하면_히트한다() {
-
+    //16이하인 경우 hit를 하므로 정상적으로 동작한다면 16이하의 점수를 가질 수 없음
+        Game game=new Game(new Deck(1));
+        game.addPlayer("user1",1000);
+        Evaluator evaluator=new Evaluator(game.getPlayerList());
+        Player testplayer=evaluator.getPlayerMap().get("user1");
+        System.out.print("처음받은 카드 2개의 점수\" "+testplayer.getPlayerScore()+ "\"가 ");
+        evaluator.start();
+        System.out.println("16이하인 경우 hit : "+testplayer.getPlayerScore());
+        assertTrue(testplayer.getPlayerScore()>16);
     }
 
     @Test
