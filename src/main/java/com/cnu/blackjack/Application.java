@@ -10,9 +10,9 @@ public class Application {
 
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("플레이서 수 입력");
+        System.out.print("플레이어 수 입력");
         playerNumber = scan.nextInt();
-        System.out.println("덱 개수 설정");
+        System.out.print("덱 개수 설정");
         int deckcount = scan.nextInt();
         Deck deck = new Deck(deckcount);
         Game game = new Game(deck);
@@ -28,14 +28,26 @@ public class Application {
         }
 
         System.out.println("=================게임시작===============");
-        System.out.println("배팅 금액을 입력합니다.");
-        game.getPlayerList().forEach((name, player) -> {
-            System.out.print("베팅할 금액을 설정하세요 "+name+" :");
-            int bet = scan.nextInt();
-            player.placeBet(bet);
-        });
-//
-        Evaluator evaluator = new Evaluator(game.getPlayerList());
+        while(true) {
+            System.out.println("배팅 금액을 입력합니다.");
+            game.getPlayerList().forEach((name, player) -> {
+                System.out.print("베팅할 금액을 설정하세요 "+name+" :");
+                int bet = scan.nextInt();
+                player.placeBet(bet);
+            });
+
+            Evaluator evaluator = new Evaluator(game.getPlayerList());
+            evaluator.start();
+            System.out.println("딜러의 스코어 : " + evaluator.getDealerScore());
+            game.getPlayerList().forEach((name, player) -> {
+                System.out.println(name + "의 스코어 : " + player.getPlayerScore());
+                System.out.println(name + "의 남은금액 : " + player.getBalance());
+            });
+            System.out.println("계속 진행? (Y/N)");
+            if(scan.next().equals("N")) {
+                break;
+            }
+        }
 
 
         System.out.println(game.getPlayerList());
