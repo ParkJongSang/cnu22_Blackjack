@@ -10,7 +10,7 @@ import static org.junit.Assert.assertTrue;
 
 public class PlayerTest {
 
-    Hand hand;
+    private Hand hand;
 
     @Before
     public void setUp() {

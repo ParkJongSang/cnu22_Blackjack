@@ -9,6 +9,7 @@ public class Player {
     private int balance;
     private int currentBet;
     private Hand hand;
+    private int score;
 
     public Player(int seedMoney, Hand hand) {
         this.balance = seedMoney;
@@ -28,6 +29,8 @@ public class Player {
     }
 
     public int getPlayerScore(){
-        return hand.getHandScore();
+        score = hand.getHandScore();
+        return score;
     }
+
 }
