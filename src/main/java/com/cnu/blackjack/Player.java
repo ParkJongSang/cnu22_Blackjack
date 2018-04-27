@@ -26,4 +26,8 @@ public class Player {
     public Card hitCard() {
         return hand.drawCard();
     }
+
+    public int getPlayerScore(){
+        return hand.getHandScore();
+    }
 }

@@ -6,6 +6,7 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class PlayerTest {
 
@@ -40,5 +41,16 @@ public class PlayerTest {
     public void 플레이어는_카드를_HIT_할수_있어야한다() {
         Player player = new Player(5000, hand);
         assertThat(player.hitCard(), notNullValue());
+    }
+
+    @Test
+    public void 플레이어는_핸드의_점수를_반환할_수_있다() {
+        Player player = new Player(5000, hand);
+        Card firstCard = player.hitCard();
+        Card secondCard = player.hitCard();
+        int playerScore = player.getPlayerScore();
+        int totalScore = firstCard.getScore(firstCard.getRank())
+                + secondCard.getScore(secondCard.getRank());
+        assertTrue(playerScore==totalScore);
     }
 }
