@@ -9,6 +9,7 @@ public class Evaluator {
 
     private Map<String, Player> playerMap;
     private Dealer dealer;
+    private int playerScore;
 
     public Evaluator(Map<String, Player> playerMap) {
         this.playerMap = playerMap;
@@ -17,17 +18,32 @@ public class Evaluator {
     }
 
     public void start() {
+        int dealerScore = getPlayerScore();
         playerMap.forEach((name,player)-> {
             player = check16(player);
             if(player.getPlayerScore()==21){
-                // win();
-            }
-            else if(player.getPlayerScore()>21){
+                win(player);
+            }else if(player.getPlayerScore()>21){
                 // lose();
+            }else if(player.getPlayerScore() > dealerScore){
+                win(player);
+            }else if(player.getPlayerScore() <= dealerScore){
+                if(dealerScore > 21){
+                    //lose();
+                }else{
+                    win(player);
+                }
             }
 
         });
-            }
+    }
+
+    public void win(Player player){
+        int betMoney = player.getCurrentBet();
+        int seedMoney = player.getBalance();
+        int resultMoney = betMoney * 2 + seedMoney;
+        player.setBalance(resultMoney);
+    }
 
     private Player check16(Player player){
         if(player.getPlayerScore() <= 16){
@@ -35,7 +51,6 @@ public class Evaluator {
             check16(player);
         }
         return player;
-
     }
 
 
@@ -45,4 +60,5 @@ public class Evaluator {
             player.hitCard();
         });
     }
+
 }
