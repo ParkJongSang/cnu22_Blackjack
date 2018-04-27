@@ -16,26 +16,21 @@ public class Evaluator {
         dealCardToPlayers();
     }
 
-    public Map<String, Player> getPlayerMap() {
-        return this.playerMap;
-    }
-
     public void start() {
         playerMap.forEach((name,player)-> {
-            player=check16(player);
+            player = check16(player);
             if(player.getPlayerScore()==21){
-               // win();
+                // win();
             }
             else if(player.getPlayerScore()>21){
-              //  lose();
+                // lose();
             }
 
         });
             }
 
     private Player check16(Player player){
-        int score=player.getPlayerScore();
-        if(score<=16){
+        if(player.getPlayerScore() <= 16){
             player.hitCard();
             check16(player);
         }

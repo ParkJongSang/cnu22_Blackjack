@@ -7,24 +7,26 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
 public class EvaluatorTest {
+    private Game game;
+
+    @Before
+    public void 시작_전_게임을_만든다() {
+        game=new Game(new Deck(1));
+        game.addPlayer("user1",1000);
+    }
+
     @Test
     public void 게임초기화시_모든플레이어는_2장의카드를_받는다() {
-        Game game=new Game(new Deck(1));
-        game.addPlayer("user1",100);
-        game.addPlayer("user2",100);
-        game.addPlayer("user3",100);
+        game.addPlayer("user2",1000);
+        game.addPlayer("user3",1000);
         Evaluator evaluator=new Evaluator(game.getPlayerList());
 
-        evaluator.getPlayerMap().forEach((name,player)->{
-            assertTrue(player.getHand().getCardList().size()==2);
-        });
+        evaluator.getPlayerMap().forEach((name,player)-> assertTrue(player.getHand().getCardList().size()==2));
     }
 
     @Test
     public void 각_플레이어는_16이하면_히트한다() {
     //16이하인 경우 hit를 하므로 정상적으로 동작한다면 16이하의 점수를 가질 수 없음
-        Game game=new Game(new Deck(1));
-        game.addPlayer("user1",1000);
         Evaluator evaluator=new Evaluator(game.getPlayerList());
         Player testplayer=evaluator.getPlayerMap().get("user1");
         System.out.print("처음받은 카드 2개의 점수\" "+testplayer.getPlayerScore()+ "\"가 ");
@@ -42,8 +44,6 @@ public class EvaluatorTest {
     @Test
     public void 각_플레이어는_17이상이면_스테이한다() {
         //16이하인 경우 hit를 하므로 정상적으로 동작한다면 16이하의 점수를 가질 수 없음
-        Game game=new Game(new Deck(1));
-        game.addPlayer("user1",1000);
         Evaluator evaluator=new Evaluator(game.getPlayerList());
         Player testplayer=evaluator.getPlayerMap().get("user1");
         //플레이어의 카드점수가 17이상인 경우 카드의 개수가 변하지 않음
