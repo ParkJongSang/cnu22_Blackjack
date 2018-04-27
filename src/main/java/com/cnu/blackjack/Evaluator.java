@@ -1,7 +1,10 @@
 package com.cnu.blackjack;
 
+import lombok.Data;
+
 import java.util.Map;
 
+@Data
 public class Evaluator {
 
     private Map<String, Player> playerMap;
