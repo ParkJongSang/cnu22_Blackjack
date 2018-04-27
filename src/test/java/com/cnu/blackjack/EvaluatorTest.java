@@ -22,6 +22,7 @@ public class EvaluatorTest {
         evaluator.start();
         System.out.println("16이하인 경우 hit : "+testplayer.getPlayerScore());
         assertTrue(testplayer.getPlayerScore()>16);
+        //
     }
 
     @Test
