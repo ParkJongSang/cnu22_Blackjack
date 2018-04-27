@@ -1,6 +1,6 @@
 package com.cnu.blackjack;
 
-import java.util.Scanner;
+        import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
@@ -34,7 +34,7 @@ public class Application {
             int bet = scan.nextInt();
             player.placeBet(bet);
         });
-
+//
         Evaluator evaluator = new Evaluator(game.getPlayerList());
 
 
