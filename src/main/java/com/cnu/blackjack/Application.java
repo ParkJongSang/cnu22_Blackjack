@@ -51,9 +51,6 @@ public class Application {
             System.out.println("딜러의 스코어 : " + evaluator.getDealerScore());
             System.out.println("=====================================");
             game.getPlayerList().forEach((name, player) -> {
-                //
-                System.out.println(player.getHand().getCardList());
-                //
 
                 System.out.println(name + " 의 결과 > " + (player.isResult()?"win": "lose"));
                 System.out.println(name + "의 스코어 : " + player.getPlayerScore());
