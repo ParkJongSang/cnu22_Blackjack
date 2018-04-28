@@ -6,7 +6,8 @@ import java.util.List;
 
 public class Hand {
     private Deck deck;
-    private List<Card> cardList = new ArrayList<Card>();
+    public List<Card> cardList;
+    //= new ArrayList<Card>();
 
     public Hand(Deck deck) {
         this.deck = deck;

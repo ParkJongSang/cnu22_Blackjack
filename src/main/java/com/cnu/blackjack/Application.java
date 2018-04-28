@@ -1,5 +1,6 @@
 package com.cnu.blackjack;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -33,6 +34,9 @@ public class Application {
         while (game.getPlayerList().size() != 0) {
             System.out.println("배팅 금액을 입력합니다.");
             game.getPlayerList().forEach((name, player) -> {
+                //*************************************************
+                player.getHand().cardList=new ArrayList<>();
+                //**************************************************
                 System.out.println("( 현재 " + name + "의 잔액 : " + player.getBalance() + " )");
                 System.out.print(name + "의 베팅할 금액을 설정하세요 :");
                 int bet = scan.nextInt();
