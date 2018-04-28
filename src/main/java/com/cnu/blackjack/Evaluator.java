@@ -36,6 +36,7 @@ public class Evaluator {
                 }
             }
 
+
         });
     }
 
@@ -44,7 +45,8 @@ public class Evaluator {
     }
 
     public void lose(Player player) {
-        player.setBalance(player.getBalance() - player.getCurrentBet());
+        //Player class의 Playerbet()에서 배팅과동시에 금액을 제하므로 2번 출금하게 됨
+        //player.setBalance(player.getBalance() - player.getCurrentBet());
     }
 
     private Player check16(Player player){
