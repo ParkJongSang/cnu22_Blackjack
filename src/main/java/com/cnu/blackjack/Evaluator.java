@@ -36,16 +36,20 @@ public class Evaluator {
                 }
             }
 
+
         });
     }
 
     public void win(Player player){
         player.setBalance(player.getCurrentBet() * 2 + player.getBalance());
+        player.setResult(true);
     }
 
     public void lose(Player player) {
-        player.setBalance(player.getBalance() - player.getCurrentBet());
-    }
+        //Player class의 Playerbet()에서 배팅과동시에 금액을 제하므로 2번 출금하게 됨
+        //player.setBalance(player.getBalance() - player.getCurrentBet());
+        player.setResult(false);
+        }
 
     private Player check16(Player player){
         if(player.getPlayerScore() <= 16){

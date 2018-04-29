@@ -10,6 +10,7 @@ public class Player {
     private int currentBet;
     private Hand hand;
     private int score;
+    private boolean result;
 
     public Player(int seedMoney, Hand hand) {
         this.balance = seedMoney;
